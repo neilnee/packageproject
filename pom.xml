@@ -10,6 +10,7 @@
   <name>PackageProject</name>
   
   <modules>
+	<module>MavenLibPack</module>
     <module>MavenPackage</module>
   </modules>
 

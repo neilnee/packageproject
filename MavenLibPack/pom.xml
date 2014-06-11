@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.neil.mavenpackage</groupId>
-  <artifactId>mavenpackage</artifactId>
+  <groupId>com.neil.mavenlibpack</groupId>
+  <artifactId>mavenlibpack</artifactId>
   <version>1.0.0</version>
-  <packaging>apk</packaging>
+  <packaging>jar</packaging>
 
-  <name>MavenPackage</name>
+  <name>MavenLibPack</name>
 
   <dependencies>
     <dependency>
@@ -16,16 +16,7 @@
       <version>4.1.1.4</version>
       <scope>provided</scope>
     </dependency>
-	
-	<dependency>
-		<groupId>com.neil.mavenlibpack</groupId>
-		<artifactId>mavenlibpack</artifactId>
-		<version>1.0.0</version>
-		<scope>system</scope>
-		<systemPath>${project.basedir}/../MavenLibPack/target/mavenlibpack.jar</systemPath>
-	</dependency>
   </dependencies>
-  
 
   <build>
     <sourceDirectory>src</sourceDirectory>
