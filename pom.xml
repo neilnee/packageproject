@@ -26,6 +26,9 @@
 				<sdk>
 				  <platform>16</platform>
 				</sdk>
+				<ndk>
+				  <path>D:\android-ndk-r9</path>
+				</ndk>
 			  </configuration>
 			</plugin>
 		  </plugins>

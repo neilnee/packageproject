@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.neil.mavenlibpack.BasicLib;
+import com.neil.mavenlibpack.NativeLib;
 
 public class MainActivity extends Activity {
 
-    private TextView mTextView = null;
+    private TextView mTextViewLib = null;
+    private TextView mTextViewNative = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +21,11 @@ public class MainActivity extends Activity {
     }
     
     private final void initControllers() {
-        mTextView = (TextView) findViewById(R.id.textview);
-        mTextView.setText(BasicLib.createString());
+    	mTextViewLib = (TextView) findViewById(R.id.textview_lib);
+    	mTextViewNative = (TextView) findViewById(R.id.textview_native);
+    	
+    	mTextViewLib.setText(BasicLib.createString());
+    	mTextViewNative.setText(NativeLib.createNativeString());
     }
 
 }
