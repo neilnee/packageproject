@@ -6,9 +6,17 @@
     tools:context="com.neil.mavenpackage.MainActivity" >
     
     <TextView 
-        android:id="@+id/textview"
+        android:id="@+id/textview_lib"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"/>
+    
+    <TextView 
+        android:id="@+id/textview_native"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_lib"
         android:textSize="18sp"
         android:textColor="@android:color/white"/>
 

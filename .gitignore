@@ -9,4 +9,5 @@ bin/
 gen/
 lib/
 target/
+obj/
 
