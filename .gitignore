@@ -8,6 +8,7 @@
 bin/
 gen/
 lib/
+libs/
 target/
 obj/
 
