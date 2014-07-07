@@ -42,5 +42,17 @@
 	  </plugin>
 	</plugins>
   </build>
+  
+  <profiles>
+	<profile>
+		<id>channel-normal</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+		<properties>
+			<manifest.metadata.channel_id>normal-channel</manifest.metadata.channel_id>
+		</properties>
+	</profile>
+  </profiles>
 
 </project>
