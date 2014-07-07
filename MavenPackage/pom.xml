@@ -1,58 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
-  <parent>
-    <groupId>com.neil.packageproject</groupId>
-    <artifactId>packageproject</artifactId>
-    <version>1.0.0</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.neil.mavenpackage</groupId>
-  <artifactId>mavenpackage</artifactId>
-  <version>1.0.0</version>
-  <packaging>apk</packaging>
-
-  <name>MavenPackage</name>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android</artifactId>
-      <version>4.1.1.4</version>
-      <scope>provided</scope>
-    </dependency>
-	
-	<dependency>
-		<groupId>com.neil.mavenlibpack</groupId>
-		<artifactId>mavenlibpack</artifactId>
+	<parent>
+		<groupId>com.neil.packageproject</groupId>
+		<artifactId>packageproject</artifactId>
 		<version>1.0.0</version>
-		<type>apklib</type>
-	</dependency>
-  </dependencies>
-  
+	</parent>
 
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <finalName>${project.artifactId}</finalName>
-	<plugins>
-	  <plugin>
-		<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-		<artifactId>android-maven-plugin</artifactId>
-	  </plugin>
-	</plugins>
-  </build>
-  
-  <profiles>
-	<profile>
-		<id>channel-normal</id>
-		<activation>
-			<activeByDefault>true</activeByDefault>
-		</activation>
-		<properties>
-			<manifest.metadata.channel_id>normal-channel</manifest.metadata.channel_id>
-		</properties>
-	</profile>
-  </profiles>
+	<groupId>com.neil.mavenpackage</groupId>
+	<artifactId>mavenpackage</artifactId>
+	<version>1.0.0</version>
+	<!-- android的安装包工程 -->
+	<packaging>apk</packaging>
+
+	<name>MavenPackage</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>4.1.1.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.neil.mavenlibpack</groupId>
+			<artifactId>mavenlibpack</artifactId>
+			<version>1.0.0</version>
+			<type>apklib</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<finalName>${project.artifactId}</finalName>
+		<!-- 指定过滤规则文件，用文件中的 key-value 键值对去过滤替换 resources 中的内容
+			   不不指定也使用 properties 直接替换 resources 中的对应key的内容-->
+		<!-- <build>
+			<filters>
+				<filter>${project.basedir}/filters/${channel_id}.properties</filter>
+			</filters>
+		</build> -->
+		<resources>
+			<!-- resource 指定资源文件的位置，包含如resources的资源文件中对应以 ${name} 定义的部分会被下面 properties 中对应的值替换-->
+			<resource>
+				<directory>${project.basedir}</directory>
+				<filtering>true</filtering>
+				<!-- 指定了替换后的文件输出至哪 -->
+				<targetPath>${project.basedir}/target/filtered-resources/</targetPath>
+				<!-- 包含 -->
+				<includes>
+					<include>AndroidManifest.xml</include>
+				</includes>
+				<!-- 不包含 -->
+				<!-- <excludes>
+				</excludes> -->
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<!-- 绑定了install 完成后执行 deploy 和 run -->
+				<!-- <executions>
+					<execution>
+						<id>run</id>
+						<goals>
+							<goal>deploy</goal>
+							<goal>run</goal>
+						</goals>
+						<phase>install</phase>
+					</execution>
+				</executions> -->
+				<configuration>
+					<!-- 指定了AndroidManifest.xml 文件的位置，该位置为 resource 中过滤替换后的位置 -->
+					<androidManifestFile>${project.basedir}/target/filtered-resources/AndroidManifest.xml</androidManifestFile>
+					<!-- 指定了assets 目录所在位置 -->
+					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
+					<!-- 指定了res 目录所在位置 -->
+					<resourceDirectory>${project.basedir}/res</resourceDirectory>
+				</configuration>
+			</plugin>
+			<!-- maven-resources-plugin 插件负责管理资源，即 resources 中定义的资源 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>resources</goal>
+						</goals>
+						<phase>initialize</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 可以定义多个配置文件进行打包 -->
+	<profiles>
+		<profile>
+			<id>channel-normal</id>
+			<!-- 定义激活条件 -->
+			<activation>
+				<!-- 默认激活 -->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<channel_id>channel-normal</channel_id>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>

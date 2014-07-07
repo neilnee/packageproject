@@ -11,6 +11,7 @@
   <groupId>com.neil.mavenlibpack</groupId>
   <artifactId>mavenlibpack</artifactId>
   <version>1.0.0</version>
+  <!-- android的lib依赖类工程 -->
   <packaging>apklib</packaging>
 
   <name>MavenLibPack</name>

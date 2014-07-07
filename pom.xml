@@ -24,10 +24,10 @@
 			  <extensions>true</extensions>
 			  <configuration>
 				<sdk>
-				  <platform>16</platform>
+				  <platform>19</platform>
 				</sdk>
 				<ndk>
-				  <path>D:\android-ndk-r9</path>
+				  <path>E:\android-ndk-r9b</path>
 				</ndk>
 			  </configuration>
 			</plugin>

@@ -4,5 +4,7 @@
     <string name="app_name">MavenPackage</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="channel_id">${channel.id}</string>
+	<string name="channelId">${channel.id}</string>
 
 </resources>
