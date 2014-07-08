@@ -27,7 +27,7 @@
 				  <platform>19</platform>
 				</sdk>
 				<ndk>
-				  <path>E:\android-ndk-r9b</path>
+				  <path>D:\android-ndk-r9</path>
 				</ndk>
 			  </configuration>
 			</plugin>
