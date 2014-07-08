@@ -27,7 +27,8 @@
 				  <platform>19</platform>
 				</sdk>
 				<ndk>
-				  <path>D:\android-ndk-r9</path>
+				  <!-- 指定 NDK 根目录，在系统环境变量中添加 ANDROID_NDK_HOME 定义 -->
+				  <path>${ANDROID_NDK_HOME}</path>
 				</ndk>
 			  </configuration>
 			</plugin>
