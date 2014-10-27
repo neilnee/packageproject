@@ -26,7 +26,7 @@
   </dependencies>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>${project.basedir}/src</sourceDirectory>
     <finalName>${project.artifactId}</finalName>
 	<plugins>
 	  <plugin>
@@ -38,12 +38,18 @@
               <goal>ndk-build</goal>
             </goals>
             <configuration>
-              <clearNativeArtifacts>false</clearNativeArtifacts>
-              <attachNativeArtifacts>true</attachNativeArtifacts>
-              <ndkArchitecture>x86 armeabi</ndkArchitecture>
+                <clearNativeArtifacts>false</clearNativeArtifacts>
+                <attachNativeArtifacts>true</attachNativeArtifacts>
+                <ndkArchitecture>x86 armeabi</ndkArchitecture>
             </configuration>
           </execution>
         </executions>
+        <configuration>
+            <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+            <resourceDirectory>${project.basedir}/res</resourceDirectory>
+            <assetsDirectory>${project.basedir}/assets</assetsDirectory>
+            <nativeLibrariesDirectory>${project.basedir}/libs</nativeLibrariesDirectory>
+        </configuration>
 	  </plugin>
 	</plugins>
   </build>

@@ -34,5 +34,6 @@
 			</plugin>
 		  </plugins>
 		</pluginManagement>
+        <defaultGoal>package</defaultGoal>
   </build>
 </project>

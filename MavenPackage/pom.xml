@@ -34,7 +34,7 @@
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>${project.basedir}/src</sourceDirectory>
 		<finalName>${project.artifactId}</finalName>
 		<!-- 指定过滤规则文件，用文件中的 key-value 键值对去过滤替换 resources 中的内容
 			   不不指定也使用 properties 直接替换 resources 中的对应key的内容-->
